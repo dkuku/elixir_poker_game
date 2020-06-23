@@ -3,11 +3,15 @@ defmodule Poker.MixProject do
 
   def project do
     [
-      app: :poker,
+      app: :poker_game,
       version: "0.1.0",
-      elixir: "~> 1.10",
+      elixir: "~> 1.7",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      description: description(),
+      package: package(),
+      name: "poker_game",
+      source_url: "https://github.com/dkuku/elxir_poker_game"
     ]
   end
 
@@ -21,9 +25,22 @@ defmodule Poker.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
-      {:typed_struct, "~> 0.2.0"},
-      {:card_deck, path: "../card_deck"}
+      {:dialyxir, "~> 1.0", only: :dev, runtime: false},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
+      {:card_deck, "~> 0.1.0"}
+    ]
+  end
+
+  defp description() do
+    "Implements poker game logic"
+  end
+
+    defp package() do
+    [
+      # These are the default files included in the package
+      files: ~w(lib test .formatter.exs mix.exs README*),
+      licenses: ["Apache-2.0"],
+      links: %{"GitHub" =>  "https://github.com/dkuku/elxir_poker_game"}
     ]
   end
 end

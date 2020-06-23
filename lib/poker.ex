@@ -2,7 +2,6 @@ defmodule Poker do
   @moduledoc """
   Documentation for `Poker`.
   """
-  use TypedStruct
   alias CardDeck, as: Deck
 
   @typedoc "Defines poker game"
