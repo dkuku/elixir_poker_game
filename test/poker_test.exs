@@ -1,5 +1,7 @@
 defmodule PokerTest do
   use ExUnit.Case
+  import ExUnit.CaptureIO
+
   doctest Poker
 
   @high_card 0
@@ -157,14 +159,54 @@ defmodule PokerTest do
     |> wins({@high_card, {14, 11, 9, 5, 4}})
   end
 
+  test "game flow with unshuffled cards" do
+    assert capture_io(
+             :stdio,
+             fn ->
+               CardDeck.new()
+               |> Poker.deal(["p1", "p2"])
+               |> Poker.new_card("p1", [4])
+               |> Poker.new_card("p2", [0, 1, 2])
+               |> Poker.pretty_score_game()
+             end
+           ) ==
+             """
+             Winner: Player: p1 Has: four of a kind Cards: 2C 2D 2H 2S 4H 
+             Other: 
+             Player: p2 Has: full house Cards: 4C 4D 4S 5C 5D 
+
+             """
+
+    assert capture_io(
+             :stdio,
+             fn ->
+               CardDeck.new()
+               |> Poker.deal(["p1", "p2", "p3"])
+               |> Poker.new_card("p1", [3, 4])
+               |> Poker.new_card("p2", [0, 1, 2])
+               |> Poker.new_card("p3", [0, 1, 4])
+               |> Poker.pretty_score_game()
+             end
+           ) ==
+             """
+             Winner: Player: p3 Has: full house Cards: 5C 5D 7C 7D 7H 
+             Other: 
+             Player: p1 Has: three of a kind Cards: 2C 2D 2H 5S 6C 
+             Player: p2 Has: full house Cards: 4C 4D 6D 6H 6S 
+
+             """
+  end
+
   def wins(left, right) do
     assert(left > right)
     left
   end
+
   def loses(left, right) do
     assert(left < right)
     left
   end
+
   def ties(left, right) do
     assert(left == right)
     left

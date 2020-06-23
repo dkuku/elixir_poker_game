@@ -21,6 +21,7 @@ defmodule Poker.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
       {:typed_struct, "~> 0.2.0"},
       {:card_deck, path: "../card_deck"}
     ]
