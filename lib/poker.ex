@@ -178,22 +178,32 @@ defmodule Poker do
   end
 
   def score_game(game) do
+  players_sorted_by_score =
     game.players
-    |> Enum.map(fn {i, hand} -> {i, hand_type(hand)} end)
+    |> Enum.map(fn {player, hand} -> {player, hand_type(hand)} end)
     |> Enum.sort_by(&elem(&1, 1), &>=/2)
-    |> hd()
-    |> elem(0)
+
+    winning_hand = players_sorted_by_score |> hd |> elem(1)
+
+    %{true: winners, false: losers} =
+      players_sorted_by_score
+    |> Enum.group_by(fn {_player, hand} -> hand == winning_hand end)
+
+    {extract_players(winners), extract_players(losers)}
+  end
+
+  def extract_players(players) do
+    Enum.map(players, fn {player, _hand} -> player end)
   end
 
   def pretty_score_game(game) do
-    winner = score_game(game)
-    rest = Map.drop(game.players, [winner])
+    {winners, losers} = score_game(game)
 
     IO.puts([
-      "Winner: ",
-      print_player(game, winner),
+      "Winner: \n",
+      Enum.map(winners, fn p -> print_player(game, p) end),
       "Other: \n",
-      Enum.map(Map.keys(rest), fn p -> print_player(game, p) end)
+      Enum.map(losers, fn p -> print_player(game, p) end)
     ])
   end
 

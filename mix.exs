@@ -38,7 +38,7 @@ defmodule Poker.MixProject do
     defp package() do
     [
       # These are the default files included in the package
-      files: ~w(lib test .formatter.exs mix.exs README*),
+      files: ~w(lib .formatter.exs mix.exs README*),
       licenses: ["Apache-2.0"],
       links: %{"GitHub" =>  "https://github.com/dkuku/elxir_poker_game"}
     ]

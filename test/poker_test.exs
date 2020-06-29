@@ -171,7 +171,8 @@ defmodule PokerTest do
              end
            ) ==
              """
-             Winner: Player: p1 Has: four of a kind Cards: 2C 2D 2H 2S 4H 
+             Winner: 
+             Player: p1 Has: four of a kind Cards: 2C 2D 2H 2S 4H 
              Other: 
              Player: p2 Has: full house Cards: 4C 4D 4S 5C 5D 
 
@@ -189,10 +190,11 @@ defmodule PokerTest do
              end
            ) ==
              """
-             Winner: Player: p3 Has: full house Cards: 5C 5D 7C 7D 7H 
+             Winner: 
+             Player: p3 Has: full house Cards: 5C 5D 7C 7D 7H 
              Other: 
-             Player: p1 Has: three of a kind Cards: 2C 2D 2H 5S 6C 
              Player: p2 Has: full house Cards: 4C 4D 6D 6H 6S 
+             Player: p1 Has: three of a kind Cards: 2C 2D 2H 5S 6C 
 
              """
   end
