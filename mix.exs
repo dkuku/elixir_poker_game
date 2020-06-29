@@ -27,7 +27,9 @@ defmodule Poker.MixProject do
     [
       {:dialyxir, "~> 1.0", only: :dev, runtime: false},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
-      {:card_deck, "~> 0.1.0"}
+      {:card_deck, "~> 0.1.0"},
+      {:gen_state_machine, "~> 2.1.0"}
+
     ]
   end
 

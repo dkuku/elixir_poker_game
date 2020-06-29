@@ -30,8 +30,8 @@ defmodule Poker do
 
   """
   @spec start(list(String.t())) :: Poker.t()
-  def start(num_players) do
-    deal(Deck.shuffled(), num_players)
+  def start(players) do
+    deal(Deck.shuffled(), players)
   end
 
   @spec deal(Deck.t(), list) :: Poker.t()
@@ -177,6 +177,11 @@ defmodule Poker do
     ])
   end
 
+  @doc """
+  We sort the players by score
+  take the highiest hand and find players that have this hand by
+  using Enum.group_by - all players with this hand are winners
+  """
   def score_game(game) do
   players_sorted_by_score =
     game.players
@@ -190,10 +195,6 @@ defmodule Poker do
     |> Enum.group_by(fn {_player, hand} -> hand == winning_hand end)
 
     {extract_players(winners), extract_players(losers)}
-  end
-
-  def extract_players(players) do
-    Enum.map(players, fn {player, _hand} -> player end)
   end
 
   def pretty_score_game(game) do
@@ -210,8 +211,12 @@ defmodule Poker do
   def score_hand(hand) do
     hand
     |> Enum.map(fn card -> Deck.to_value(card) end)
-    |> CardDeck.sort()
+    |> Deck.sort()
     |> Poker.hand_type()
+  end
+
+  defp extract_players(players) do
+    Enum.map(players, fn {player, _hand} -> player end)
   end
 
   defp int(string) when is_bitstring(string), do: Deck.rank_value(string)
