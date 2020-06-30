@@ -28,8 +28,8 @@ defmodule Poker.MixProject do
       {:dialyxir, "~> 1.0", only: :dev, runtime: false},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:card_deck, "~> 0.1.0"},
-      {:gen_state_machine, "~> 2.1.0"}
-
+      {:gen_state_machine, "~> 2.1.0"},
+      {:anonymous_name_generator, "~> 0.1"}
     ]
   end
 
@@ -37,12 +37,12 @@ defmodule Poker.MixProject do
     "Implements poker game logic"
   end
 
-    defp package() do
+  defp package() do
     [
       # These are the default files included in the package
       files: ~w(lib .formatter.exs mix.exs README*),
       licenses: ["Apache-2.0"],
-      links: %{"GitHub" =>  "https://github.com/dkuku/elxir_poker_game"}
+      links: %{"GitHub" => "https://github.com/dkuku/elxir_poker_game"}
     ]
   end
 end

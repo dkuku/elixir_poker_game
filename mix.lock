@@ -1,4 +1,5 @@
 %{
+  "anonymous_name_generator": {:hex, :anonymous_name_generator, "0.1.3", "0515a49f75c1c98644618eb507b92099459905a87e98600ac821b5cf042c9425", [:mix], [], "hexpm", "8b978874cff443ba178372f8b51cf8e76bcca5d4722a44b66a6e1656c40507a4"},
   "card_deck": {:hex, :card_deck, "0.1.0", "a5a7a18b3e077cd87347c8ffeaf037bd72fb253bfde803a60e04badc825cf410", [:mix], [], "hexpm", "a361f89dd635352243a8856b520a25b40140c3443e2d2709b3dbdf352d5cc12b"},
   "dialyxir": {:hex, :dialyxir, "1.0.0", "6a1fa629f7881a9f5aaf3a78f094b2a51a0357c843871b8bc98824e7342d00a5", [:mix], [{:erlex, ">= 0.2.6", [hex: :erlex, repo: "hexpm", optional: false]}], "hexpm", "aeb06588145fac14ca08d8061a142d52753dbc2cf7f0d00fc1013f53f8654654"},
   "earmark": {:hex, :earmark, "1.4.5", "62ffd3bd7722fb7a7b1ecd2419ea0b458c356e7168c1f5d65caf09b4fbdd13c8", [:mix], [], "hexpm", "b7d0e6263d83dc27141a523467799a685965bf8b13b6743413f19a7079843f4f"},
